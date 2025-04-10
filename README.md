@@ -1,5 +1,5 @@
 # Laporan Proyek Machine Learning - Analisis Prediktif Kecelakaan Lalu Lintas di India
-<br/>
+
 by : Adrian Putra Ramadhan (adrianramadhan881@gmail.com)
 
 ## 1. Domain Proyek
