@@ -6,8 +6,10 @@ by : Adrian Putra Ramadhan (adrianramadhan881@gmail.com)
 Berdasarkan laporan Ministry of Road Transport and Highways (MoRTH) dan Open Government Data (OGD) India, India mencatat salah satu angka kecelakaan lalu lintas tertinggi di dunia. Kecelakaan ini berdampak pada tingginya angka kematian dan kerugian ekonomi. Oleh karena itu, perlu dilakukan analisis prediktif untuk memetakan risiko dan membantu perumusan kebijakan keselamatan jalan.
 
 **Referensi**:
-- Road Safety in India: Status Report, Ministry of Road Transport and Highways, India
-
+- Ministry of Road Transport and Highways. *Road Safety in India: Status Report*. Government of India, 2025.  
+   Diakses dari: https://tripc.iitd.ac.in/assets/publication/India_Status_Report_on_Road_Safety-20242.pdf
+- Kaggle. *India Road Accident Dataset Predictive Analysis* [CSV]. 2025.  
+   Diunduh dari: https://www.kaggle.com/datasets/khushikyad001/india-road-accident-dataset-predictive-analysis/data
 ## 2. Business Understanding
 ### 2.1 Problem Statements
 1. **Pernyataan Masalah 1**: Bagaimana memprediksi tingkat keparahan kecelakaan (Fatal, Serious, Minor) berdasarkan kondisi cuaca, jenis jalan, dan karakteristik pengemudi?  
