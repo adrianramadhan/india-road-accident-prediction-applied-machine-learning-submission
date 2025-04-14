@@ -33,7 +33,6 @@ Paragraf ini menjelaskan bahwa dataset yang digunakan adalah _India Road Acciden
 - Format: CSV (Comma-Separated Values)  
 - Sumber Data: Sintesis dari beberapa dataset dunia nyata, termasuk laporan Ministry of Road Transport & Highways (MoRTH), Open Government Data (OGD) India, dan statistik kecelakaan dari berbagai negara bagian di India.  
 - Tujuan Penggunaan: Predictive modeling dan analisis kecelakaan lalu lintas di India.  
-- Frekuensi Pembaruan: Tahunan (Update terakhir: Maret 2025)
 
 ### 3.2 Deskripsi Fitur
 | Fitur                        | Tipe        | Deskripsi                                                 |
