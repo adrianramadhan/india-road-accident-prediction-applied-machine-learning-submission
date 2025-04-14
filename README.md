@@ -82,7 +82,7 @@ Paragraf ini menjelaskan bahwa dataset yang digunakan adalah _India Road Acciden
 - Korelasi Analisis korelasi numerik (corr) menunjukkan hubungan moderat antara Number of Casualties dan Fatalities.
   ![alt text](./image/korelasi.png)
 - Analisis frekuensi kecelakaan berdasarkan bulan dan kondisi cuaca, serta bulan dan kondisi jalan
-  ![alt text](./image/season.png.png)
+  ![alt text](./image/season.png)
 
 ## 4. Data Preparation
 
