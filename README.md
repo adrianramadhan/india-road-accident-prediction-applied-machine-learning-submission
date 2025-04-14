@@ -27,7 +27,14 @@ Berdasarkan laporan Ministry of Road Transport and Highways (MoRTH) dan Open Gov
 
 ### 2.3 Solution Statements
 
-- **Solution 1**: Terapkan berbagai algoritma klasifikasi (Logistic Regression, Random Forest, XGBoost)
+- **Solution 1**: Implementasi 6 algoritma klasifikasi dengan penanganan class imbalance:
+- Logistic Regression - Baseline model dengan interpretabilitas
+- SVM - Untuk data high-dimensional
+- Random Forest - Menangkap hubungan non-linear
+- Gradient Boosting - Optimasi bertahap
+- XGBoost - Regularisasi untuk prevent overfitting
+- LightGBM - Efisiensi komputasi
+- **Solution 2**: Penggunaan class_weight='balanced' untuk mengatasi distribusi kelas tidak seimbang (Fatal: 34.2%, Serious: 32.7%, Minor: 33.1%)
 
 ## 3. Data Understanding
 
@@ -82,14 +89,26 @@ Paragraf ini menjelaskan bahwa dataset yang digunakan adalah _India Road Acciden
 Tahapan yang dilakukan:
 
 1. **Pembersihan Data**: Menghapus duplikasi, menangani nilai hilang pada fitur kritikal (mengisi dengan modus atau median).
+- Numerik: Median (robust terhadap outlier)
+- Kategorikal: 'Unknown' (mempertahankan struktur kategori)
 2. **Encoding dan Scaling**: Numerik: Imputasi median + StandardScaler, Kategorikal: One-Hot Encoding (handle_unknown).
-4. **Split Data**: Membagi data menjadi training (70%) dan testing (30%).
+- StandardScaler (mean=0, std=1) untuk algoritma berbasis jarak (SVM) dan regresi
+3. **Split Data**: Membagi data menjadi training (70%) dan testing (30%).
+- Mempertahankan distribusi kelas asli saat split data
 
 ## 5. Modeling
 
-### 5.1 Klasifikasi Keparahan Kecelakaan
+## 5.1 Perbandingan Algoritma
+| Algoritma          | Kelebihan                      | Kekurangan                   | Parameter Kunci                     |
+|--------------------|--------------------------------|------------------------------|-------------------------------------|
+| Logistic Regression| Cepat, interpretable coefficients | Asumsi linearitas          | `max_iter=1000`, `class_weight`     |
+| SVM                | Efektif high-dim space          | Komputasi intensif          | `kernel=RBF`, `class_weight`        |
+| Random Forest      | Robust terhadap noise           | Cenderung overfit           | `n_estimators=100`, `max_depth`     |
+| XGBoost            | Regularisasi built-in           | Hyperparameter sensitif     | `learning_rate=0.1`, `max_depth=3`  |
+| LightGBM           | Efisien untuk data besar        | Sensitif pada small data    | `num_leaves=31`, `min_data_in_leaf=20` |
 
-- Algoritma: Logistic Regression, SVM, Random Forest, Gradient Boosting, XGBoost, LightGBM, CatBoost.
+---
+
 
 ## 6. Evaluasi
 
