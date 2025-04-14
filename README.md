@@ -77,11 +77,14 @@ Paragraf ini menjelaskan bahwa dataset yang digunakan adalah _India Road Acciden
 
 ### 3.3 Exploratory Data Analysis
 
-- Distribusi kategori keparahan kecelakaan
+- Distribusi kategori keparahan kecelakaan.
+
   ![alt text](./image/piechart.png)
 - Korelasi Analisis korelasi numerik (corr) menunjukkan hubungan moderat antara Number of Casualties dan Fatalities.
+
   ![alt text](./image/korelasi.png)
-- Analisis frekuensi kecelakaan berdasarkan bulan dan kondisi cuaca, serta bulan dan kondisi jalan
+- Analisis frekuensi kecelakaan berdasarkan bulan dan kondisi cuaca, serta bulan dan kondisi jalan.
+
   ![alt text](./image/season.png)
 
 ## 4. Data Preparation
