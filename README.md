@@ -94,7 +94,6 @@ Visualisasi dan analisis untuk memahami distribusi dan hubungan antar fitur.
 
 #### b. Korelasi Antar Variabel Numerik  
   ![alt text](./image/korelasi.png)
-- Analisis frekuensi kecelakaan berdasarkan bulan dan kondisi cuaca, serta bulan dan kondisi jalan.
 **Insight**:  
 - Korelasi antar variabel numerik sangat rendah (nilai ≈ 0), menunjukkan independensi.  
 - Korelasi positif lemah (~0.04) antara `Number of Casualties` dan `Number of Fatalities`.
