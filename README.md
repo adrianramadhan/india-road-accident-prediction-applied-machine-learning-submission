@@ -42,11 +42,18 @@ Paragraf ini menjelaskan bahwa dataset yang digunakan adalah _India Road Acciden
 
 ### 3.1 Sumber Data
 
+- **Tautan Sumber Data**: [Kaggle Dataset](https://www.kaggle.com/datasets/khushikyad001/india-road-accident-dataset-predictive-analysis/data) 
 - File Name: **accident_prediction_india.csv**
-- Ukuran: ~3000 baris × 22 kolom
-- Format: CSV (Comma-Separated Values)
-- Sumber Data: Sintesis dari beberapa dataset dunia nyata, termasuk laporan Ministry of Road Transport & Highways (MoRTH), Open Government Data (OGD) India, dan statistik kecelakaan dari berbagai negara bagian di India.
-- Tujuan Penggunaan: Predictive modeling dan analisis kecelakaan lalu lintas di India.
+- Jumlah Data: ~3000 baris × 22 kolom
+
+#### Kondisi Data
+- **Nilai yang Hilang**:  
+  - `Traffic Control Presence`: 716 nilai hilang  
+  - `Driver License Status`: 975 nilai hilang  
+- **Duplikasi**: 0 baris duplikat (setelah pemeriksaan)  
+- **Pencilan (Outlier)**: Outlier: Setelah deteksi menggunakan metode IQR pada kolom Numerik, tidak ditemukan outlier signifikan (tidak ada nilai yang berada di luar batas IQR).
+
+---
 
 ### 3.2 Deskripsi Fitur
 
@@ -76,16 +83,27 @@ Paragraf ini menjelaskan bahwa dataset yang digunakan adalah _India Road Acciden
 | Accident Location Details   | Categorical | Detail lokasi (Bridge, Curve, Intersection, dsb.)     |
 
 ### 3.3 Exploratory Data Analysis
+Visualisasi dan analisis untuk memahami distribusi dan hubungan antar fitur.
 
-- Distribusi kategori keparahan kecelakaan.
+#### a. Distribusi Tingkat Keparahan Kecelakaan  
 
   ![alt text](./image/piechart.png)
-- Korelasi Analisis korelasi numerik (corr) menunjukkan hubungan moderat antara Number of Casualties dan Fatalities.
+**Insight**:  
+- Proporsi kelas hampir seimbang: Minor (~32.8%), Serious (~34.5%), Fatal (~32.7%).  
+- Tidak ada kelas yang mendominasi.  
 
+#### b. Korelasi Antar Variabel Numerik  
   ![alt text](./image/korelasi.png)
 - Analisis frekuensi kecelakaan berdasarkan bulan dan kondisi cuaca, serta bulan dan kondisi jalan.
+**Insight**:  
+- Korelasi antar variabel numerik sangat rendah (nilai ≈ 0), menunjukkan independensi.  
+- Korelasi positif lemah (~0.04) antara `Number of Casualties` dan `Number of Fatalities`.
 
+#### c. Frekuensi Kecelakaan Bulanan Berdasarkan Cuaca & Kondisi Jalan  
   ![alt text](./image/season.png)
+**Insight**:  
+- **Cuaca**: Puncak kecelakaan terjadi pada musim hujan (Apr–Jun) dan berkabut (Sep–Nov), menunjukkan pengaruh visibilitas.  
+- **Kondisi Jalan**: Kecelakaan lebih sering terjadi di jalan basah (Wet) dan dalam konstruksi (Under Construction) pada Okt–Jan, menyoroti area berisiko tinggi.  
 
 ## 4. Data Preparation
 
