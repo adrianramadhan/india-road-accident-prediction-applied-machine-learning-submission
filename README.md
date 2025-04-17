@@ -250,9 +250,39 @@ Confusion matrix ter-normalisasi mengungkapkan bahwa:
 - Tidak ada satu kelas yang secara signifikan lebih sering diprediksi salah dibanding kelas lain (tidak bias kelas).
 
 ### 6.5 Dampak terhadap Business Understanding  
-#### Prediksi Keparahan Kecelakaan  
-- Model berhasil memetakan tiga kelas, tetapi akurasi rendah → **perlu optimasi fitur atau teknik resampling**.  
-- **Speed Limit** dan **Driver Age** adalah fitur paling berpengaruh → mendukung kebijakan keselamatan.
+ 
+## **Hubungan dengan Problem Statements**  
+### **Problem Statement 1**:  
+*"Memprediksi kategori keparahan kecelakaan (Fatal, Serious, Minor) untuk prioritas penanganan."*  
+- **Dampak Model**:  
+  - Model telah memetakan tiga kelas keparahan, tetapi **akurasi rendah (~35%)** menunjukkan prediksi belum cukup akurat untuk mendukung keputusan prioritas penanganan.  
+  - **Risiko**: Kesalahan klasifikasi dapat menyebabkan alokasi sumber daya (misalnya ambulans, polisi) ke lokasi yang kurang kritis.  
+- **Tindakan**: Perlu peningkatan akurasi melalui optimasi fitur (misalnya menambahkan data cuaca real-time) atau teknik resampling (SMOTE).  
+
+### **Problem Statement 2**:  
+*"Mengidentifikasi variabel yang paling berpengaruh terhadap fatalitas kecelakaan."*  
+- **Dampak Model**:  
+  - **Speed Limit** dan **Driver Age** teridentifikasi sebagai fitur paling berpengaruh.  
+  - **Insight Bisnis**:  
+    - Batas kecepatan tinggi berkorelasi dengan peningkatan fatalitas → validasi perlunya penegakan batas kecepatan ketat.  
+    - Usia pengemudi muda/rentan (misal: <25 atau >60) perlu jadi fasisilitas edukasi keselamatan.  
+
+## **Goals**
+### **Goal 1**:  
+*"Membangun model klasifikasi untuk memprediksi keparahan kecelakaan dengan akurasi >75%."*  
+- **Status**: **Belum tercapai** (akurasi tertinggi 35.7%).  
+- **Dampak**:  
+  - Model belum dapat diimplementasikan secara operasional karena risiko kesalahan prediksi tinggi.  
+  - **Rekomendasi**: Fokus pada eksperimen dengan teknik *ensemble learning* atau *deep learning* untuk meningkatkan akurasi.  
+
+### **Goal 2**:  
+*"Mengidentifikasi 3–5 variabel kritis penyebab fatalitas kecelakaan."*  
+- **Status**: **Tercapai**.  
+  - Variabel kritis: **Speed Limit**, **Driver Age**, **Weather Conditions** (dari analisis EDA).  
+- **Dampak**:  
+  - Hasil ini mendorong pemerintah untuk:  
+    1. Memperbarui kebijakan batas kecepatan di area rawan.  
+    2. Menargetkan kampanye keselamatan untuk kelompok usia berisiko.
 
 ---
 
