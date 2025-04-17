@@ -125,11 +125,6 @@ Tahapan yang dilakukan:
 ## Model 1: Logistic Regression
 ### Cara Kerja  
 Logistic Regression memodelkan probabilitas kelas (Fatal, Serious, Minor) sebagai fungsi logit dari kombinasi linear fitur.  
-**Formula**:  
-\[
-P(y=i \mid X) = \frac{\exp(\beta_i^T X)}{\sum_j \exp(\beta_j^T X)}
-\]  
-di mana \(\beta_i\) adalah koefisien untuk kelas \(i\).  
 
 ### Parameter  
 - `max_iter=1000`: Maksimum iterasi untuk konvergensi solver (default: `lbfgs`).  
