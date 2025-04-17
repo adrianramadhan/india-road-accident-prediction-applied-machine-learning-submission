@@ -48,8 +48,8 @@ Paragraf ini menjelaskan bahwa dataset yang digunakan adalah _India Road Acciden
 
 #### Kondisi Data
 - **Nilai yang Hilang**:  
-  - `Traffic Control Presence`: 716 nilai hilang  
-  - `Driver License Status`: 975 nilai hilang  
+  - `Traffic Control Presence`: 716 entri berisi string "None" yang diinterpretasikan sebagai missing  
+  - `Driver License Status`: 975 entri berisi string "None" yang diinterpretasikan sebagai missing 
 - **Duplikasi**: 0 baris duplikat (setelah pemeriksaan)  
 - **Pencilan (Outlier)**: Outlier: Setelah deteksi menggunakan metode IQR pada kolom Numerik, tidak ditemukan outlier signifikan (tidak ada nilai yang berada di luar batas IQR).
 
