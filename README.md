@@ -122,21 +122,110 @@ Tahapan yang dilakukan:
 
 ## 5. Modeling
 
-## 5.1 Perbandingan Algoritma
-| Algoritma          | Kelebihan                      | Kekurangan                   | Parameter Kunci                     |
-|--------------------|--------------------------------|------------------------------|-------------------------------------|
-| Logistic Regression| Cepat, interpretable coefficients | Asumsi linearitas          | `max_iter=1000`, `class_weight`     |
-| SVM                | Efektif high-dim space          | Komputasi intensif          | `kernel=RBF`, `class_weight`        |
-| Random Forest      | Robust terhadap noise           | Cenderung overfit           | `n_estimators=100`, `max_depth`     |
-| XGBoost            | Regularisasi built-in           | Hyperparameter sensitif     | `learning_rate=0.1`, `max_depth=3`  |
-| LightGBM           | Efisien untuk data besar        | Sensitif pada small data    | `num_leaves=31`, `min_data_in_leaf=20` |
+## Model 1: Logistic Regression
+### Cara Kerja  
+Logistic Regression memodelkan probabilitas kelas (Fatal, Serious, Minor) sebagai fungsi logit dari kombinasi linear fitur.  
+**Formula**:  
+\[
+P(y=i \mid X) = \frac{\exp(\beta_i^T X)}{\sum_j \exp(\beta_j^T X)}
+\]  
+di mana \(\beta_i\) adalah koefisien untuk kelas \(i\).  
+
+### Parameter  
+- `max_iter=1000`: Maksimum iterasi untuk konvergensi solver (default: `lbfgs`).  
+- `class_weight='balanced'`: Menyeimbangkan bobot kelas berdasarkan frekuensi data.  
+
+### Kelebihan/Kekurangan  
+✅ **Interpretabel**: Koefisien menjelaskan pengaruh fitur secara langsung.  
+❌ **Asumsi linearitas** antara log-odds dan fitur.  
+
+---
+
+## Model 2: Support Vector Machine (SVM)
+### Cara Kerja  
+SVM mencari hyperplane optimal untuk memisahkan kelas dengan margin terlebar. Kernel RBF digunakan untuk memetakan data ke ruang dimensi tinggi.  
+
+### Parameter  
+- `kernel='rbf'`: Kernel Radial Basis Function.  
+- `C=1.0`: Trade-off antara margin dan penalti kesalahan.  
+- `gamma='scale'`: Menentukan jangkauan pengaruh titik data.  
+- `class_weight='balanced'`: Menyeimbangkan bobot kelas.  
+
+### Kelebihan/Kekurangan  
+✅ **Mampu menangani batas keputusan non-linear**.  
+❌ **Komputasi intensif** untuk dataset besar.  
+
+---
+
+## Model 3: Random Forest
+### Cara Kerja  
+Membangun ensemble pohon keputusan dan mengambil suara mayoritas untuk prediksi.  
+
+### Parameter  
+- `n_estimators=100`: Jumlah pohon dalam ensemble.  
+- `max_depth=None`: Tidak ada batas kedalaman pohon.  
+- `class_weight='balanced'`: Penyeimbang bobot kelas.  
+
+### Kelebihan/Kekurangan  
+✅ **Robust terhadap noise** dan interaksi non-linear.  
+❌ **Rentan overfitting** jika pohon terlalu dalam.  
+
+---
+
+## Model 4: Gradient Boosting
+### Cara Kerja  
+Membangun pohon secara bertahap untuk meminimalkan residu dengan optimasi gradien.  
+
+### Parameter  
+- `learning_rate=0.1`: Ukuran langkah pembaruan.  
+- `n_estimators=100`: Jumlah pohon.  
+- `max_depth=3`: Kedalaman maksimal pohon.  
+
+### Kelebihan/Kekurangan  
+✅ **Performansi tinggi dengan penalaan parameter**.  
+❌ **Waktu training lama** jika `n_estimators` besar.  
+
+---
+
+## Model 5: XGBoost
+### Cara Kerja  
+Implementasi gradient boosting dengan regularisasi L1/L2 untuk mencegah overfitting.  
+
+### Parameter  
+- `learning_rate=0.1`  
+- `max_depth=3`  
+- `reg_alpha=0`, `reg_lambda=0`: Koefisien regularisasi.  
+
+### Kelebihan/Kekurangan  
+✅ **Regularisasi bawaan** meningkatkan generalisasi.  
+❌ **Banyak hyperparameter** perlu disetel.  
+
+---
+
+## Model 6: LightGBM
+### Cara Kerja  
+Menggunakan *histogram-based learning* dan *leaf-wise growth* untuk efisiensi.  
+
+### Parameter  
+- `num_leaves=31`: Jumlah daun maksimum.  
+- `min_data_in_leaf=20`: Data minimal per daun.  
+
+### Kelebihan/Kekurangan  
+✅ **Cepat untuk dataset besar**.  
+❌ **Sensitif terhadap data kecil/noisy**.  
 
 ---
 
 
+
 ## 6. Evaluasi
 
-### 6.1 Evaluasi Klasifikasi
+### 6.1 Metrik Evaluasi  
+- **Accuracy**: Persentase prediksi benar.  
+- **Macro-F1**: Rata-rata F1-score per kelas.  
+- **Balanced Accuracy**: Rata-rata recall tiap kelas.
+
+### 6.2 Evaluasi Klasifikasi
 Berikut adalah ringkasan performa enam model klasifikasi pada data uji:
 
 | Model               | Akurasi | Macro‑F1 | Balanced Accuracy |
@@ -151,7 +240,7 @@ Berikut adalah ringkasan performa enam model klasifikasi pada data uji:
 - Logistic Regression dan Gradient Boosting menunjukkan performa terbaik, namun masih di bawah target akurasi 75%.
 - Hasil ini menunjukkan bahwa fitur yang digunakan saat ini belum cukup kuat dalam memprediksi tingkat keparahan kecelakaan.
 
-### 6.2 Pentingnya Fitur
+### 6.3 Pentingnya Fitur
 Berdasarkan hasil dari model berbasis pohon keputusan:
 
 - **Batas Kecepatan (Speed Limit)** dan **Usia Pengemudi** merupakan fitur paling berpengaruh.
@@ -159,11 +248,16 @@ Berdasarkan hasil dari model berbasis pohon keputusan:
 - Fitur kategorikal seperti Kondisi Jalan, Jenis Kendaraan, dan Cuaca memiliki kontribusi sedang.
 - Model XGBoost mendistribusikan bobot fitur lebih merata, namun fitur numerik utama tetap dominan.
 
-### 6.3 Confusion Matrix
+### 6.4 Confusion Matrix
 Confusion matrix ter-normalisasi mengungkapkan bahwa:
 
 - Kesalahan klasifikasi paling sering terjadi antara kelas *Minor* ↔ *Serious* dan *Serious* ↔ *Fatal*.
 - Tidak ada satu kelas yang secara signifikan lebih sering diprediksi salah dibanding kelas lain (tidak bias kelas).
+
+### 6.5 Dampak terhadap Business Understanding  
+#### Prediksi Keparahan Kecelakaan  
+- Model berhasil memetakan tiga kelas, tetapi akurasi rendah → **perlu optimasi fitur atau teknik resampling**.  
+- **Speed Limit** dan **Driver Age** adalah fitur paling berpengaruh → mendukung kebijakan keselamatan.
 
 ---
 
