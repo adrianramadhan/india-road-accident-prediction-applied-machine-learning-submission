@@ -269,7 +269,7 @@ Confusion matrix ter-normalisasi mengungkapkan bahwa:
 
 ## **Goals**
 ### **Goal 1**:  
-*"Membangun model klasifikasi untuk memprediksi keparahan kecelakaan dengan akurasi >75%."*  
+*"Membangun model klasifikasi untuk memprediksi keparahan kecelakaan dengan akurasi tinggi (>80%)"*  
 - **Status**: **Belum tercapai** (akurasi tertinggi 35.7%).  
 - **Dampak**:  
   - Model belum dapat diimplementasikan secara operasional karena risiko kesalahan prediksi tinggi.  
