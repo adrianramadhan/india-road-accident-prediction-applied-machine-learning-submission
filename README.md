@@ -88,18 +88,21 @@ Visualisasi dan analisis untuk memahami distribusi dan hubungan antar fitur.
 #### a. Distribusi Tingkat Keparahan Kecelakaan  
 
   ![alt text](./image/piechart.png)
+
 **Insight**:  
 - Proporsi kelas hampir seimbang: Minor (~32.8%), Serious (~34.5%), Fatal (~32.7%).  
 - Tidak ada kelas yang mendominasi.  
 
 #### b. Korelasi Antar Variabel Numerik  
   ![alt text](./image/korelasi.png)
+
 **Insight**:  
 - Korelasi antar variabel numerik sangat rendah (nilai ≈ 0), menunjukkan independensi.  
 - Korelasi positif lemah (~0.04) antara `Number of Casualties` dan `Number of Fatalities`.
 
 #### c. Frekuensi Kecelakaan Bulanan Berdasarkan Cuaca & Kondisi Jalan  
   ![alt text](./image/season.png)
+  
 **Insight**:  
 - **Cuaca**: Puncak kecelakaan terjadi pada musim hujan (Apr–Jun) dan berkabut (Sep–Nov), menunjukkan pengaruh visibilitas.  
 - **Kondisi Jalan**: Kecelakaan lebih sering terjadi di jalan basah (Wet) dan dalam konstruksi (Under Construction) pada Okt–Jan, menyoroti area berisiko tinggi.  
