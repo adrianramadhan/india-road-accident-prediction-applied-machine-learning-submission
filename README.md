@@ -102,10 +102,11 @@ Visualisasi dan analisis untuk memahami distribusi dan hubungan antar fitur.
 
 #### c. Frekuensi Kecelakaan Bulanan Berdasarkan Cuaca & Kondisi Jalan  
   ![alt text](./image/season.png)
-  
+
 **Insight**:  
-- **Cuaca**: Puncak kecelakaan terjadi pada musim hujan (Apr–Jun) dan berkabut (Sep–Nov), menunjukkan pengaruh visibilitas.  
-- **Kondisi Jalan**: Kecelakaan lebih sering terjadi di jalan basah (Wet) dan dalam konstruksi (Under Construction) pada Okt–Jan, menyoroti area berisiko tinggi.  
+- Visibilitas rendah (kabut, hujan) dan jalan licin diduga menjadi penyebab utama peningkatan risiko kecelakaan.
+- Cuaca stormy (badai) juga mungkin berkontribusi, tetapi frekuensinya lebih rendah dibandingkan hujan/kabut.
+- Tren kecelakaan terkait cuaca cenderung musiman, seperti musim hujan (Apr–Jun) dan musim dingin berkabut (Sep–Nov).  
 
 ## 4. Data Preparation
 
