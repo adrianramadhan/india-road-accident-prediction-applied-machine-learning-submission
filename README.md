@@ -112,13 +112,40 @@ Visualisasi dan analisis untuk memahami distribusi dan hubungan antar fitur.
 
 Tahapan yang dilakukan:
 
-1. **Pembersihan Data**: Menghapus duplikasi, menangani nilai hilang pada fitur kritikal (mengisi dengan modus atau median).
-- Numerik: Median (robust terhadap outlier)
-- Kategorikal: 'Unknown' (mempertahankan struktur kategori)
-2. **Encoding dan Scaling**: Numerik: Imputasi median + StandardScaler, Kategorikal: One-Hot Encoding (handle_unknown).
-- StandardScaler (mean=0, std=1) untuk algoritma berbasis jarak (SVM) dan regresi
-3. **Split Data**: Membagi data menjadi training (70%) dan testing (30%).
-- Mempertahankan distribusi kelas asli saat split data
+# 4. Data Preparation
+
+## 4.1 Pembersihan dan Imputasi Data
+
+### 4.1.1 Salin Dataset
+- Menyalin dataset asli ke variabel baru (`df_clean`) untuk menjaga data mentah tetap utuh
+- Semua manipulasi data berikutnya dilakukan pada salinan ini
+
+## 4.2 Normalisasi dan Encoding
+
+### 4.2.1 Fitur Numerik
+- **Penanganan nilai hilang**: Mengisi nilai hilang dengan median (lebih tahan terhadap outlier)
+- **Standardisasi**: Transformasi data agar memiliki mean = 0 dan standar deviasi = 1
+
+### 4.2.2 Fitur Kategorikal
+- **Penanganan nilai hilang**: Mengisi nilai hilang dengan label "Unknown"
+- **Transformasi kategori**: One-Hot Encoding untuk mengubah kategori menjadi format numerik biner
+
+### 4.2.3 Integrasi Preprocessing
+- Menggunakan `ColumnTransformer` untuk menggabungkan proses:
+  - Preprocessing numerik (imputasi median + standardisasi)
+  - Preprocessing kategorikal (imputasi "Unknown" + one-hot encoding)
+- Proses diterapkan secara paralel pada kolom masing-masing tipe data
+
+## 4.3 Split Features dan Target
+- **Fitur (X)**: Gabungan kolom numerik dan kategorikal yang telah diproses
+- **Target (y)**: 
+  - Kolom `Accident Severity` yang dipetakan menjadi nilai numerik 
+  - (Minor → 0, Serious → 1, Fatal → 2)
+
+## 4.4 Train-Test Split
+- Membagi dataset menjadi 70% data latih dan 30% data uji
+- Menggunakan stratifikasi berdasarkan `y` untuk menjaga distribusi kelas
+- Menetapkan `random_state` untuk memastikan hasil yang reproducible
 
 ## 5. Modeling
 
